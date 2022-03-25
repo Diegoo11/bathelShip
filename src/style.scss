@@ -1,0 +1,128 @@
+$cub: 25vw;
+$c50: #f8fafc;
+$c100: #f1f5f9;
+$c200: #e2e8f0;
+$c300: #cbd5e1;
+$c400: #94a3b8;
+$c500: #64748b;
+$c600: #475569;
+$c700: #334155;
+$c800: #1e293b;
+$c900: #0f172a;
+body {
+    background-color: $c100;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between
+}
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600;700&display=swap');
+*{
+    font-family: 'Fredoka', sans-serif;
+}
+::selection{
+    color: white;
+    background-color: #64748b;
+}
+
+header {
+    background-color: $c400;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 5.5rem;
+    color: $c100;
+    span{
+        margin: 15px 0;
+    }
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    gap: 300px;
+    align-items: center ;
+
+}
+footer{
+    background-color: $c400;
+    width: 100vw;
+    color: $c100;   
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    span{
+        margin: 10px 0;
+    }
+}
+.table1{
+    display: grid;
+    grid-template: repeat(10,1fr)/repeat(10,1fr);
+    border: 1px solid $c700;
+    margin: 5%;
+
+}
+.square{
+    width: 32px;
+    height: 32px;
+    border: solid 1px $c400;
+}
+.table2{
+    display: grid;
+    grid-template: repeat(10,1fr)/repeat(10,1fr);
+    border: 1px solid $c700;
+    margin: 5%;
+}
+.t2{
+    transition: all 100ms;
+}
+.t2:hover{
+    background-color: $c300;
+}
+.p1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    span{
+        font-size: 2rem;
+        color: $c600;
+    }
+    position: relative;
+}
+.p2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    span{
+        font-size: 2rem;
+        color: $c600;
+    }
+}
+button{
+    height: 90px;
+    width: 90px;
+    border: 0;
+    border-radius: 10px;
+    background-color: $c600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+        height: 70px;
+        width: 70px;
+    }
+    position: absolute;
+    left: -110px;
+    bottom: 50px;
+}
+button:hover{
+    cursor: pointer;
+    transform: translateY(2%);
+}
