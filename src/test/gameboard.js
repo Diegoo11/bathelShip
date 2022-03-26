@@ -37,17 +37,18 @@ function gameboard() {
     };
 
     this.all = [];
-    console.log(this.flota);
-    this.receiveAttack = (num, lether) => {
+    // console.log(this.flota.call(gameboard));
+    // console.log(this);
+    receiveAttack = function (num, lether) {
         const attack = num + lether;
+        console.log(this.flota);
         this.all.push(attack);
         if (gps.some((x) => x === attack)) {
-            console.log(this.gps);
             for (let i = 1; i <= contador.length; i += 1) {
                 for (let e = 1; e <= Object.values(this.flota[`ship${i}`].coord).length; e += 1) {
                     const valores = this.flota[`ship${i}`].coord[`coord${e}`].xy;
                     if (valores === attack) {
-                        this.hit(i, e);
+                        hit(i, e);
                     }
                     if ((Object.values(this.flota[`ship${i}`].damage).every((site) => site === 'bad'))) {
                         this.flota[`ship${i}`].status = 'dead';
