@@ -16,6 +16,20 @@ player1.addShip(2, 9, 'b', true);
 player1.addShip(2, 9, 'g');
 player1.addShip(1, 9, 'j');
 
+// eslint-disable-next-line no-unused-vars
+// function botPlay() {
+//    const ramdomNumber = Math.floor(Math.random() * 10) + 1;
+//    const ramdomLether = String.fromCharCode(Math.floor(Math.random() * 10) + 97);
+//    const legal = player1.all;
+///    const even = (x) => x === ramdomNumber + ramdomLether;
+//    if (!legal.some(even)) {
+//
+//        //        console.log(`se jugo ${ramdomLether} ${ramdomNumber}`);
+//    } else {
+//        //        console.log('no se juego');
+//    }
+// }
+
 const player2 = gameboard();
 
 player2.addShip(1, 1, 'b');
@@ -29,22 +43,7 @@ player2.addShip(1, 10, 'a');
 player2.addShip(3, 8, 'f', true);
 player2.addShip(2, 9, 'h', true);
 
-function botPlay() {
-    const ramdomNumber = Math.floor(Math.random() * 10) + 1;
-    const ramdomLether = String.fromCharCode(Math.floor(Math.random() * 10) + 97);
-    const legal = player1.all;
-    console.log(legal);
-    const even = (x) => x === ramdomNumber + ramdomLether;
-    if (!legal.some(even)) {
-        player1.receiveAttack(2, 'b');
-        console.log(`se jugo ${ramdomLether} ${ramdomNumber}`);
-    } else {
-        console.log('no se juego');
-    }
-}
-
-botPlay();
-
 console.log(player1);
-
 console.log(player2);
+
+player1.receiveAttack(1, 'b');

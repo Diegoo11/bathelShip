@@ -45,8 +45,10 @@ header {
 .content{
     display: flex;
     justify-content: center;
-    gap: 300px;
+    column-gap: 300px;
+    row-gap: 50px;
     align-items: center ;
+    flex-wrap: wrap;
 
 }
 footer{
