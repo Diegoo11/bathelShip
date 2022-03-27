@@ -128,4 +128,40 @@ button:hover {
   transform: translateY(2%);
 }
 
+.waterpoint {
+  position: relative;
+}
+
+.waterpoint::after {
+  content: "";
+  background-color: #334155;
+  height: 8px;
+  width: 8px;
+  position: absolute;
+  border-radius: 50%;
+  right: calc(50% - 4px);
+  top: calc(50% - 3px);
+}
+
+.damagepoint {
+  position: relative;
+}
+
+.damagepoint::after {
+  content: "X";
+  height: 8px;
+  width: 8px;
+  color: red;
+  font-weight: bold;
+  font-size: 1.2rem;
+  position: absolute;
+  border-radius: 50%;
+  top: 20%;
+  left: 25%;
+}
+
+.shipcoords {
+  background-color: #94a3b8;
+}
+
 /*# sourceMappingURL=style.css.map */
