@@ -151,8 +151,11 @@ test('prueba de ataque 2', () => {
 
 test('prueba de funcion endgame', () => {
     const player = gameboard();
-    player.addShip(5, 3, 'c', true);
-    player.receiveAttack(9, 'c');
+    player.addShip(3, 3, 'c', true);
+    player.receiveAttack(3, 'c');
+    player.receiveAttack(4, 'c');
+    player.receiveAttack(5, 'c');
+    expect(player.endGame()).toEqual(true);
 });
 
 // -------------------------Prueba de ataque--------------------------------------

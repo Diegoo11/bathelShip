@@ -1,49 +1,71 @@
+/* eslint-disable no-alert */
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
 
 const gameboard = require('./test/gameboard');
+const shipcoords = require('./test/doom');
 
-const player1 = gameboard();
+let player1 = gameboard();
 
-player1.addShip(1, 2, 'b');
-player1.addShip(3, 1, 'e');
-player1.addShip(1, 3, 'f');
-player1.addShip(4, 4, 'c', true);
-player1.addShip(2, 5, 'e');
-player1.addShip(3, 5, 'h', true);
-player1.addShip(1, 7, 'j');
-player1.addShip(2, 9, 'b', true);
-player1.addShip(2, 9, 'g');
-player1.addShip(1, 9, 'j');
+while (player1.contador.length < 10) {
+    player1.makeFlota();
+}
 
-// eslint-disable-next-line no-unused-vars
-// function botPlay() {
-//    const ramdomNumber = Math.floor(Math.random() * 10) + 1;
-//    const ramdomLether = String.fromCharCode(Math.floor(Math.random() * 10) + 97);
-//    const legal = player1.all;
-///    const even = (x) => x === ramdomNumber + ramdomLether;
-//    if (!legal.some(even)) {
-//
-//        //        console.log(`se jugo ${ramdomLether} ${ramdomNumber}`);
-//    } else {
-//        //        console.log('no se juego');
-//    }
-// }
+player1.gps.forEach((x) => shipcoords(x));
+
+const reload = document.getElementById('reload');
+reload.onclick = () => {
+    console.log('xd');
+    player1 = gameboard();
+    document.querySelectorAll('.square').forEach((x) => x.classList.remove('shipcoords'));
+    while (player1.contador.length < 10) {
+        player1.makeFlota();
+    }
+
+    player1.gps.forEach((x) => shipcoords(x));
+};
 
 const player2 = gameboard();
 
-player2.addShip(1, 1, 'b');
-player2.addShip(1, 1, 'f');
-player2.addShip(1, 3, 'i');
-player2.addShip(2, 4, 'a');
-player2.addShip(2, 4, 'd');
-player2.addShip(4, 3, 'g', true);
-player2.addShip(3, 8, 'a');
-player2.addShip(1, 10, 'a');
-player2.addShip(3, 8, 'f', true);
-player2.addShip(2, 9, 'h', true);
+console.log(player2);
+
+while (player2.contador.length < 10) {
+    console.log('hola');
+    player2.makeFlota();
+}
+
+// eslint-disable-next-line no-unused-vars
+function botPlay() {
+    const ramdomNumber = Math.floor(Math.random() * 10) + 1;
+    const ramdomLether = String.fromCharCode(Math.floor(Math.random() * 10) + 97);
+    // eslint-disable-next-line no-undef
+    const legal = player1.all;
+    const even = (x) => x === ramdomNumber + ramdomLether;
+    if (!(legal.some(even))) {
+        player1.receiveAttack(ramdomNumber, ramdomLether, ramdomNumber + ramdomLether);
+    } else {
+        botPlay();
+    }
+}
+
+const table = document.querySelector('.table2');
+const matris = [];
+table.addEventListener('click', (e) => {
+    reload.disabled = true;
+    const ataque = document.getElementById(e.srcElement.id).getAttribute('data-xy');
+    if (matris.some((x) => x === ataque)) { return; }
+    matris.push(ataque);
+    const coordY = document.getElementById(e.srcElement.id).getAttribute('data-xy').slice(1);
+    const coordX = document.getElementById(e.srcElement.id).getAttribute('data-xy').slice(0, 1);
+    player2.receiveAttack(coordX, coordY, e.srcElement.id);
+    botPlay();
+    if (player1.endGame()) {
+        alert('gano el player 2');
+    }
+    if (player2.endGame()) {
+        alert('gano el player 1');
+    }
+});
 
 console.log(player1);
 console.log(player2);
-
-player1.receiveAttack(1, 'b');
